@@ -1,4 +1,4 @@
-# pylaai-op-xxz
+# Pyla-Skrilya
 
 > [English version](README.md)
 
