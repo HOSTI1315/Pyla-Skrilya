@@ -1,0 +1,9 @@
+webhook_url = ""
+discord_id = ""
+username = "PylaAI"
+send_match_summary = false
+include_screenshot = true
+ping_when_stuck = false
+ping_when_target_is_reached = false
+ping_every_x_match = 0
+ping_every_x_minutes = 0

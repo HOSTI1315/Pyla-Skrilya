@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual envs
+.venv/
+venv/
+env/
+ENV/
+
+# IDEs / editors
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Claude Code local settings
+.claude/
+
+# Runtime / training artifacts
+runs/
+*.log
+logs/
+
+# Per-user runtime state — do not commit personal data
+cfg/match_log.jsonl
+cfg/sessions.json
+sessions/
+
+# Local secrets — never commit a filled config (the empty template is committed)
+cfg/brawl_stars_api.local.toml
+cfg/webhook_config.local.toml
+
+# OS / misc
+*.tmp
+*.bak

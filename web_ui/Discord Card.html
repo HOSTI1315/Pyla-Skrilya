@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru" data-screen-label="Discord Card Designs">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>PylaAI · Discord Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin:0; padding:0; background: #f0eee9; font-family: 'Space Grotesk', sans-serif; }
+    :root { --mono: 'JetBrains Mono', ui-monospace, monospace; }
+  </style>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="discord-card.jsx"></script>
+  <script type="text/babel">
+    // Two scenarios to show the cards cope with both positive and negative sessions.
+    const NEG_SAMPLE = {
+      ...CARD_SAMPLE,
+      brawler: { name: 'El Primo', key: 'elprimo', color: '#D13B3B' },
+      mode: { name: 'Brawl Ball', color: '#5B8DEF' },
+      goal: { type: 'trophies', current: 387, target: 500, start: 412 },
+      stats: { games: 32, wins: 12, losses: 20, winRate: 38, netTrophies: -25, duration: '2h 08m', winStreak: 0 },
+      curve: [412,410,414,411,408,404,407,403,406,402,398,401,405,408,
+              404,400,396,399,402,398,394,391,395,398,402,406,403,399,
+              395,391,388,391,394,390,386,389,392,388,384,380,383,386,
+              390,387,383,380,384,387,390,386,382,385,388,391,387,384,
+              380,383,386,387]
+    };
+
+    function Render() {
+      return (
+        <DesignCanvas>
+          <DCSection id="cards" title="Discord Notification Card"
+            subtitle="1200×630 · тёмная тема PylaAI · итог сессии для PIL-рендера">
+            <DCArtboard id="a-split" label="A · Split Layout" width={1200} height={630}>
+              <CardVariantA/>
+            </DCArtboard>
+            <DCArtboard id="b-hero" label="B · Hero Chart" width={1200} height={630}>
+              <CardVariantB/>
+            </DCArtboard>
+            <DCArtboard id="c-full" label="C · Full-bleed Chart" width={1200} height={630}>
+              <CardVariantC/>
+            </DCArtboard>
+          </DCSection>
+
+          <DCSection id="neg" title="Негативная сессия"
+            subtitle="Как карточка выглядит при проигранной сессии · красный trend">
+            <DCArtboard id="a-neg" label="A · Split" width={1200} height={630}>
+              <CardVariantA data={NEG_SAMPLE}/>
+            </DCArtboard>
+            <DCArtboard id="b-neg" label="B · Hero" width={1200} height={630}>
+              <CardVariantB data={NEG_SAMPLE}/>
+            </DCArtboard>
+            <DCArtboard id="c-neg" label="C · Full-bleed" width={1200} height={630}>
+              <CardVariantC data={NEG_SAMPLE}/>
+            </DCArtboard>
+          </DCSection>
+        </DesignCanvas>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Render/>);
+  </script>
+</body>
+</html>
